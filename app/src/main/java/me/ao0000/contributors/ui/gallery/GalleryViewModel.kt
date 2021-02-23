@@ -1,4 +1,4 @@
-package me.ao0000.contributors.ui
+package me.ao0000.contributors.ui.gallery
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
