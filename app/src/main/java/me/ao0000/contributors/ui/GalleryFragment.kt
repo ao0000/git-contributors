@@ -7,15 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import me.ao0000.contributors.repository.Repository
-import me.ao0000.contributors.ViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 import me.ao0000.contributors.databinding.GalleryFragmentBinding
 
+@AndroidEntryPoint
 class GalleryFragment : Fragment() {
 
     private lateinit var binding: GalleryFragmentBinding
 
-    private val viewModel by viewModels<GalleryViewModel> { ViewModelFactory(Repository()) }
+    private val viewModel by viewModels<GalleryViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
