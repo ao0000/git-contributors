@@ -30,14 +30,17 @@ class GalleryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.debugText.text = "sample"
-
         viewModel.fetch()
+
+        val adapter = GalleryRecyclerAdapter()
+
+        binding.contributorGalleryRecycler.adapter = adapter
 
         viewModel.collection.observe(viewLifecycleOwner, Observer {
             it?.let {
-                binding.debugText.text = it.get(0).name
+                adapter.submitList(it)
             }
         })
+
     }
 }

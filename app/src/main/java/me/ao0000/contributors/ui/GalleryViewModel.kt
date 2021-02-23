@@ -1,6 +1,5 @@
 package me.ao0000.contributors.ui
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,7 +18,6 @@ class GalleryViewModel(private val repository: Repository) : ViewModel() {
     fun fetch() {
         viewModelScope.launch {
             _collection.value = repository.getContributorList()
-            Log.d("fetch", "${_collection.value}")
         }
     }
 
