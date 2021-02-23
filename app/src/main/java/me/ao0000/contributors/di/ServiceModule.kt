@@ -8,7 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import me.ao0000.contributors.BuildConfig
 import me.ao0000.contributors.repository.RepositoryImpl
-import me.ao0000.contributors.repository.remote.ContributorService
+import me.ao0000.contributors.repository.source.remote.Service
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
@@ -38,13 +38,13 @@ object ServiceModule {
 
     @Singleton
     @Provides
-    fun provideService(retrofit: Retrofit): ContributorService {
-        return retrofit.create(ContributorService::class.java)
+    fun provideService(retrofit: Retrofit): Service {
+        return retrofit.create(Service::class.java)
     }
 
     @Singleton
     @Provides
-    fun provideRepository(service: ContributorService): RepositoryImpl {
+    fun provideRepository(service: Service): RepositoryImpl {
         return RepositoryImpl(service)
     }
 
