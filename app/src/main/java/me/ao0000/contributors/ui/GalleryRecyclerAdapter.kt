@@ -5,11 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.CircleCropTransformation
 import me.ao0000.contributors.databinding.ContributorItemBinding
 import me.ao0000.contributors.model.Contributor
 
 class GalleryRecyclerAdapter :
-    ListAdapter<Contributor, GalleryRecyclerAdapter.ContributorViewHolder>(diffCallback()) {
+    ListAdapter<Contributor, GalleryRecyclerAdapter.ContributorViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContributorViewHolder =
         ContributorViewHolder.create(parent)
@@ -23,7 +25,12 @@ class GalleryRecyclerAdapter :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(contributor: Contributor) {
+            binding.userAvatarImage.load(contributor.avatarUrl) {
+                crossfade(true)
+                transformations(CircleCropTransformation())
+            }
             binding.contributor = contributor
+            binding.contributionsText.text = "Contributions : " + contributor.contributions
             binding.executePendingBindings()
         }
 
@@ -40,7 +47,7 @@ class GalleryRecyclerAdapter :
     }
 }
 
-class diffCallback : DiffUtil.ItemCallback<Contributor>() {
+class DiffCallback : DiffUtil.ItemCallback<Contributor>() {
     override fun areItemsTheSame(oldItem: Contributor, newItem: Contributor): Boolean =
         oldItem.name == newItem.name
 

@@ -15,44 +15,41 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp">
 
+
+        <ImageView
+            android:id="@+id/user_avatar_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
         <TextView
             android:id="@+id/name_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
             android:singleLine="true"
             android:text="@{contributor.name}"
-            android:textSize="16sp"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="sample name" />
-
-        <TextView
-            android:id="@+id/avatar_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:singleLine="true"
-            android:text="@{contributor.avatarUrl}"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name_text"
-            tools:text="avatar url" />
+            app:layout_constraintStart_toEndOf="@+id/user_avatar_image"
+            app:layout_constraintTop_toTopOf="@+id/user_avatar_image"
+            tools:text="name" />
 
         <TextView
             android:id="@+id/contributions_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:singleLine="true"
-            android:text="@{contributor.usersUrl}"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/user_avatar_image"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/avatar_text"
-            tools:text="0 contributions" />
+            app:layout_constraintStart_toStartOf="@+id/name_text"
+            app:layout_constraintTop_toBottomOf="@+id/name_text"
+            tools:text="Contribution : 0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
