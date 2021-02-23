@@ -1,13 +1,16 @@
 package me.ao0000.contributors.repository.source.remote
 
 import me.ao0000.contributors.repository.ContributorEntity
+import me.ao0000.contributors.repository.UserEntity
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface ContributorService {
+interface Service {
+
     @GET("repos/googlesamples/android-architecture-components/contributors")
     suspend fun getContributorList(): List<ContributorEntity>
 
     @GET("users/ianhanniballake/{user}")
-    suspend fun getUser(@Path("user") user: String)
+    suspend fun getUser(@Path("user") user: String): UserEntity
+
 }
