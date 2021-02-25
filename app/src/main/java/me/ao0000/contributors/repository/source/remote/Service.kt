@@ -10,7 +10,7 @@ interface Service {
     @GET("repos/googlesamples/android-architecture-components/contributors")
     suspend fun getContributorList(): List<ContributorEntity>
 
-    @GET("users/ianhanniballake/{user}")
+    @GET("users/{user}")
     suspend fun getUser(@Path("user") user: String): UserEntity
 
 }
