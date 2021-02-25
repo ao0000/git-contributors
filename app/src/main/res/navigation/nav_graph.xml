@@ -19,6 +19,10 @@
         android:id="@+id/detailFragment"
         android:name="me.ao0000.contributors.ui.detail.DetailFragment"
         android:label="DetailFragment"
-        tools:layout="@layout/detail_fragment" />
+        tools:layout="@layout/detail_fragment" >
+        <argument
+            android:name="userName"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

@@ -10,7 +10,7 @@ import coil.transform.CircleCropTransformation
 import me.ao0000.contributors.databinding.ContributorItemBinding
 import me.ao0000.contributors.model.Contributor
 
-class GalleryRecyclerAdapter(private val onClick: () -> Unit) :
+class GalleryRecyclerAdapter(private val onClick: (String) -> Unit) :
     ListAdapter<Contributor, GalleryRecyclerAdapter.ContributorViewHolder>(
         DiffCallback()
     ) {
@@ -32,7 +32,7 @@ class GalleryRecyclerAdapter(private val onClick: () -> Unit) :
 
         fun bind(
             contributor: Contributor,
-            onClick: () -> Unit
+            onClick: (String) -> Unit
         ) {
             binding.userAvatarImage.load(contributor.avatarUrl) {
                 crossfade(true)
@@ -41,7 +41,7 @@ class GalleryRecyclerAdapter(private val onClick: () -> Unit) :
             binding.contributor = contributor
             binding.contributionsText.text = "Contributions : " + contributor.contributions
             binding.root.setOnClickListener {
-                onClick()
+                onClick(contributor.name)
             }
             binding.executePendingBindings()
         }

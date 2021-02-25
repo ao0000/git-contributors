@@ -5,11 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import me.ao0000.contributors.databinding.DetailFragmentBinding
 
 class DetailFragment : Fragment() {
 
     private lateinit var binding: DetailFragmentBinding
+
+    private val args by navArgs<DetailFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,4 +23,8 @@ class DetailFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.nameText.text = args.userName
+    }
 }

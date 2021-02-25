@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
-import me.ao0000.contributors.R
 import me.ao0000.contributors.databinding.GalleryFragmentBinding
 
 @AndroidEntryPoint
@@ -46,8 +45,9 @@ class GalleryFragment : Fragment() {
         })
     }
 
-    private fun itemOnClick() {
-        findNavController().navigate(R.id.action_galleryFragment_to_detailFragment)
+    private fun itemOnClick(userName: String) {
+        val action = GalleryFragmentDirections.actionGalleryFragmentToDetailFragment(userName)
+        findNavController().navigate(action)
     }
 
 }
