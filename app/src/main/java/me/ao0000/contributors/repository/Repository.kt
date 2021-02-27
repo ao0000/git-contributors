@@ -4,10 +4,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import me.ao0000.contributors.model.Contributor
 import me.ao0000.contributors.model.User
+import me.ao0000.contributors.repository.source.local.GitDatabase
 import me.ao0000.contributors.repository.source.remote.Service
 import javax.inject.Inject
 
-class RepositoryImpl @Inject constructor(private val service: Service) : Repository {
+class RepositoryImpl @Inject constructor(
+    private val service: Service,
+    private val database: GitDatabase
+) : Repository {
 
     override suspend fun getContributorList(): List<Contributor> {
         return withContext(Dispatchers.IO) {

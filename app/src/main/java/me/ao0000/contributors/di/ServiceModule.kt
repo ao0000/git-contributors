@@ -1,13 +1,17 @@
 package me.ao0000.contributors.di
 
+import android.content.Context
+import androidx.room.Room
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import me.ao0000.contributors.BuildConfig
 import me.ao0000.contributors.repository.RepositoryImpl
+import me.ao0000.contributors.repository.source.local.GitDatabase
 import me.ao0000.contributors.repository.source.remote.Service
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -44,8 +48,20 @@ object ServiceModule {
 
     @Singleton
     @Provides
-    fun provideRepository(service: Service): RepositoryImpl {
-        return RepositoryImpl(service)
+    fun provideRepository(service: Service, database: GitDatabase): RepositoryImpl {
+        return RepositoryImpl(service, database)
+    }
+
+    @Singleton
+    @Provides
+    fun provideDatabase(@ApplicationContext context: Context): GitDatabase {
+        return Room.databaseBuilder(
+            context,
+            GitDatabase::class.java,
+            "database"
+        )
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
 }
