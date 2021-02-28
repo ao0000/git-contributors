@@ -7,12 +7,9 @@ import me.ao0000.contributors.repository.ContributorEntity
 interface ContributorDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertContributors(vararg contributors: ContributorEntity)
+    suspend fun insertContributors(contributors: List<ContributorEntity>)
 
-    @Query("SELECT * FROM contributor_table ORDER BY contributor_id ASC")
+    @Query("SELECT * FROM contributor_table ORDER BY contributions DESC")
     suspend fun getContributors(): List<ContributorEntity>
-
-    @Update
-    suspend fun updateContributors(vararg contributors: ContributorEntity)
 
 }

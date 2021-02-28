@@ -7,12 +7,9 @@ import me.ao0000.contributors.repository.UserEntity
 interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertUsers(vararg user: UserEntity)
+    suspend fun insertUser(user: UserEntity)
 
-    @Query("SELECT * FROM user_table ORDER BY user_id ASC")
-    suspend fun getUsers(): List<UserEntity>
-
-    @Update
-    suspend fun updateUsers(vararg users: UserEntity)
+    @Query("SELECT * FROM user_table WHERE user_name = :userName")
+    suspend fun getUser(userName: String): UserEntity
 
 }

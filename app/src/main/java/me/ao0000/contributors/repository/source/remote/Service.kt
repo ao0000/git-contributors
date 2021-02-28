@@ -8,7 +8,7 @@ import retrofit2.http.Path
 interface Service {
 
     @GET("repos/googlesamples/android-architecture-components/contributors")
-    suspend fun getContributorList(): List<ContributorEntity>
+    suspend fun getContributors(): List<ContributorEntity>
 
     @GET("users/{user}")
     suspend fun getUser(@Path("user") user: String): UserEntity

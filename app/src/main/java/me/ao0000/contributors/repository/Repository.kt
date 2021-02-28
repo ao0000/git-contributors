@@ -10,12 +10,17 @@ import javax.inject.Inject
 
 class RepositoryImpl @Inject constructor(
     private val service: Service,
-    private val database: GitDatabase
+    database: GitDatabase
 ) : Repository {
 
-    override suspend fun getContributorList(): List<Contributor> {
+    private val contributorDao = database.contributorDao()
+
+    private val userDao = database.userDao()
+
+    override suspend fun getContributors(): List<Contributor> {
         return withContext(Dispatchers.IO) {
-            service.getContributorList().map {
+            fetchContributors()
+            contributorDao.getContributors().map {
                 it.toModel()
             }
         }
@@ -23,15 +28,26 @@ class RepositoryImpl @Inject constructor(
 
     override suspend fun getUser(userName: String): User {
         return withContext(Dispatchers.IO) {
-            service.getUser(userName).toModel()
+            fetchUser(userName)
+            userDao.getUser(userName).toModel()
         }
+    }
+
+    private suspend fun fetchContributors() {
+        val contributors = service.getContributors()
+        contributorDao.insertContributors(contributors)
+    }
+
+    private suspend fun fetchUser(userName: String) {
+        val user = service.getUser(userName)
+        userDao.insertUser(user)
     }
 
 }
 
 interface Repository {
 
-    suspend fun getContributorList(): List<Contributor>
+    suspend fun getContributors(): List<Contributor>
 
     suspend fun getUser(userName: String): User
 

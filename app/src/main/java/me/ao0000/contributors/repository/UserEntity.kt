@@ -11,6 +11,7 @@ data class UserEntity(
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "user_id")
     val id: Long,
+    @ColumnInfo(name = "user_name")
     @Json(name = "login") val loginName: String,
     @Json(name = "avatar_url") val avatarUrl: String,
     val name: String?,

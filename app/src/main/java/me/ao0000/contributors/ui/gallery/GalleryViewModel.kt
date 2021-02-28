@@ -19,7 +19,7 @@ class GalleryViewModel @ViewModelInject constructor(private val repository: Repo
 
     fun fetch() {
         viewModelScope.launch {
-            _collection.value = repository.getContributorList()
+            _collection.value = repository.getContributors()
         }
     }
 
