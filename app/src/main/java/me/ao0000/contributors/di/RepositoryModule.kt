@@ -3,13 +3,13 @@ package me.ao0000.contributors.di
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 import me.ao0000.contributors.repository.Repository
 import me.ao0000.contributors.repository.RepositoryImpl
 import javax.inject.Singleton
 
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
 
     @Singleton

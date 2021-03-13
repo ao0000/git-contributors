@@ -1,15 +1,17 @@
 package me.ao0000.contributors.ui.detail
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import me.ao0000.contributors.model.User
 import me.ao0000.contributors.repository.Repository
+import javax.inject.Inject
 
-class DetailViewModel @ViewModelInject constructor(private val repository: Repository) :
+@HiltViewModel
+class DetailViewModel @Inject constructor(private val repository: Repository) :
     ViewModel() {
 
     private val _user = MutableLiveData<User>()
@@ -22,5 +24,5 @@ class DetailViewModel @ViewModelInject constructor(private val repository: Repos
             _user.value = repository.getUser(userName)
         }
     }
-    
+
 }

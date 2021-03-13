@@ -1,15 +1,17 @@
 package me.ao0000.contributors.ui.gallery
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import me.ao0000.contributors.model.Contributor
 import me.ao0000.contributors.repository.Repository
+import javax.inject.Inject
 
-class GalleryViewModel @ViewModelInject constructor(private val repository: Repository) :
+@HiltViewModel
+class GalleryViewModel @Inject constructor(private val repository: Repository) :
     ViewModel() {
 
     private val _collection = MutableLiveData<List<Contributor>>()
