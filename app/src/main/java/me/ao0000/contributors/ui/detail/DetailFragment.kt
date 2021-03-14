@@ -38,12 +38,16 @@ class DetailFragment : Fragment(R.layout.detail_fragment) {
                 }
                 nameText.text = it.name
                 loginNameText.text = it.loginName
-                followingText.text = "following : " + it.following
-                followerText.text = "follower : " + it.followers
-                publicReposText.text = "public repos : " + it.publicRepos
-                emailText.text = "email : " + it.email
-                locationText.text = "location : " + it.location
-                companyText.text = "company : " + it.company
+                followingText.text =
+                    resources.getString(R.string.following_display_text) + it.following
+                followerText.text =
+                    resources.getString(R.string.follower_display_text) + it.followers
+                publicReposText.text =
+                    resources.getString(R.string.public_repos_display_text) + it.publicRepos
+                emailText.text = resources.getString(R.string.email_display_text) + it.email
+                locationText.text =
+                    resources.getString(R.string.location_display_text) + it.location
+                companyText.text = resources.getString(R.string.company_display_text) + it.company
                 bioText.text = it.bio
             }
         })

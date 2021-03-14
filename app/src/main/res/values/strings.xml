@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">contributors</string>
+    <string name="contributions_display_text">Contributions : </string>
+    <string name="following_display_text">following : </string>
+    <string name="follower_display_text">follower : </string>
+    <string name="public_repos_display_text">public repos : </string>
+    <string name="email_display_text">email : </string>
+    <string name="location_display_text">location : </string>
+    <string name="company_display_text">company : </string>
 </resources>

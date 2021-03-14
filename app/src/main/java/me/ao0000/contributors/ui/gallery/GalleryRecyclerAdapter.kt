@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
+import me.ao0000.contributors.R
 import me.ao0000.contributors.databinding.ContributorItemBinding
 import me.ao0000.contributors.model.Contributor
 
@@ -39,7 +40,8 @@ class GalleryRecyclerAdapter(private val onClick: (String) -> Unit) :
                 transformations(CircleCropTransformation())
             }
             binding.contributor = contributor
-            binding.contributionsText.text = "Contributions : " + contributor.contributions
+            binding.contributionsText.text =
+                binding.root.resources.getString(R.string.contributions_display_text) + contributor.contributions
             binding.root.setOnClickListener {
                 onClick(contributor.name)
             }
