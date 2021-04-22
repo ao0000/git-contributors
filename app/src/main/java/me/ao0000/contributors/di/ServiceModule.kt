@@ -2,19 +2,20 @@ package me.ao0000.contributors.di
 
 import android.content.Context
 import androidx.room.Room
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.serialization.json.Json
 import me.ao0000.contributors.BuildConfig
 import me.ao0000.contributors.repository.RepositoryImpl
 import me.ao0000.contributors.repository.source.local.GitDatabase
 import me.ao0000.contributors.repository.source.remote.Service
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -23,20 +24,13 @@ object ServiceModule {
 
     @Singleton
     @Provides
-    fun provideMoshi(): Moshi {
-        return Moshi
-            .Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
-    }
-
-    @Singleton
-    @Provides
-    fun provideRetrofit(moshi: Moshi): Retrofit {
+    fun provideRetrofit(): Retrofit {
+        val contentType: MediaType = "application/json".toMediaType()
+        val format = Json { ignoreUnknownKeys = true }
         return Retrofit
             .Builder()
             .baseUrl(BuildConfig.SERVER_URL)
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .addConverterFactory(format.asConverterFactory(contentType))
             .build()
     }
 
