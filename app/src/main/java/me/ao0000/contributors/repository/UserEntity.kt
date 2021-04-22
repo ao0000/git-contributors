@@ -3,23 +3,29 @@ package me.ao0000.contributors.repository
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.squareup.moshi.Json
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 import me.ao0000.contributors.model.User
 
 @Entity(tableName = "user_table")
+@Serializable
 data class UserEntity(
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "user_id")
     val id: Long,
+
+    @SerialName("login")
     @ColumnInfo(name = "user_name")
-    @Json(name = "login") val loginName: String,
-    @Json(name = "avatar_url") val avatarUrl: String,
+    val loginName: String,
+    @SerialName("avatar_url")
+    val avatarUrl: String,
     val name: String?,
     val company: String?,
     val location: String?,
     val email: String?,
     val bio: String?,
-    @Json(name = "public_repos") val publicRepos: Int,
+    @SerialName("public_repos")
+    val publicRepos: Int,
     val followers: Int,
     val following: Int
 ) {
