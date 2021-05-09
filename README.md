@@ -8,7 +8,7 @@ Contributors displays contributors of a repository.
 - Architecture
     - MVVM Architecture
     - Respository pattern
-- Hilt for dependency injection
+- Hilt - for dependency injection
 - Retrofit
 - kotlinx serialization
 - Coil
