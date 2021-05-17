@@ -18,9 +18,9 @@ class DetailFragment : Fragment(R.layout.detail_fragment) {
 
     private val binding: DetailFragmentBinding by viewBinding()
 
-    private val viewModel by viewModels<DetailViewModel>()
+    private val viewModel: DetailViewModel by viewModels<DetailViewModel>()
 
-    private val args by navArgs<DetailFragmentArgs>()
+    private val args: DetailFragmentArgs by navArgs<DetailFragmentArgs>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

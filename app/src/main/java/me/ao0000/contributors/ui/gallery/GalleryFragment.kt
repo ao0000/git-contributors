@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.wada811.viewbinding.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,7 +17,7 @@ class GalleryFragment : Fragment(R.layout.gallery_fragment) {
 
     private val binding: GalleryFragmentBinding by viewBinding()
 
-    private val viewModel by viewModels<GalleryViewModel>()
+    private val viewModel: GalleryViewModel by viewModels<GalleryViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,7 +37,8 @@ class GalleryFragment : Fragment(R.layout.gallery_fragment) {
     }
 
     private fun itemOnClick(userName: String) {
-        val action = GalleryFragmentDirections.actionGalleryFragmentToDetailFragment(userName)
+        val action: NavDirections =
+            GalleryFragmentDirections.actionGalleryFragmentToDetailFragment(userName)
         findNavController().navigate(action)
     }
 
