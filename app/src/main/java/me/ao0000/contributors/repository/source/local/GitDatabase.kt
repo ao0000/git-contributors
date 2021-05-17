@@ -2,8 +2,8 @@ package me.ao0000.contributors.repository.source.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import me.ao0000.contributors.repository.ContributorEntity
-import me.ao0000.contributors.repository.UserEntity
+import me.ao0000.contributors.model.ContributorEntity
+import me.ao0000.contributors.model.UserEntity
 
 @Database(
     entities = [ContributorEntity::class, UserEntity::class],

@@ -1,7 +1,7 @@
 package me.ao0000.contributors.repository.source.remote
 
-import me.ao0000.contributors.repository.ContributorEntity
-import me.ao0000.contributors.repository.UserEntity
+import me.ao0000.contributors.model.ContributorEntity
+import me.ao0000.contributors.model.UserEntity
 import retrofit2.http.GET
 import retrofit2.http.Path
 

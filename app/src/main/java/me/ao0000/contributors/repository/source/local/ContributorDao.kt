@@ -1,7 +1,10 @@
 package me.ao0000.contributors.repository.source.local
 
-import androidx.room.*
-import me.ao0000.contributors.repository.ContributorEntity
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import me.ao0000.contributors.model.ContributorEntity
 
 @Dao
 interface ContributorDao {

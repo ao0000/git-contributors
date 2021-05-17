@@ -1,11 +1,10 @@
-package me.ao0000.contributors.repository
+package me.ao0000.contributors.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import me.ao0000.contributors.model.User
 
 @Entity(tableName = "user_table")
 @Serializable
